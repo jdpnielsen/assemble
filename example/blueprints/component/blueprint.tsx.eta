@@ -1,0 +1,14 @@
+import styles from './<%= it.name %>.module.scss';
+
+interface <%= it.componentName %>Props {
+
+}
+
+export function <%= it.componentName %>(props: <%= it.componentName %>Props) {
+	return (
+		<div className={styles.<%= it.componentClass %>}>
+			<p>Hi from <%= it.componentName %></p>
+			<code>{JSON.stringify(props, undefined, 2)}</code>
+		</div>
+	);
+}

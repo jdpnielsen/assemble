@@ -1,0 +1,14 @@
+import type { <%= it.componentName %>Data } from './<%= it.name %>.query';
+
+interface <%= it.componentName %>Props {
+	data: <%= it.componentName %>Data;
+}
+
+export function <%= it.componentName %>({ data }: <%= it.componentName %>Props) {
+	return (
+		<div>
+			<p>Hi from <%= it.componentName %> page</p>
+			<code>{JSON.stringify(data, undefined, 2)}</code>
+		</div>
+	);
+}

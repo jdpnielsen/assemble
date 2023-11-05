@@ -1,0 +1,24 @@
+{
+	// Assemble uses ts-node to execute blueprints. It can be configured in the host project's tsconfig.json file.
+	"ts-node": {
+		"require": [
+			"tsconfig-paths/register"
+		]
+	},
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"paths": {
+			"@jdpnielsen/assemble": [
+				"../src/index.ts"
+			],
+		}
+	},
+	"include": [
+		"*.ts",
+		"*.js",
+		".eslintrc.js",
+		"**/*.ts",
+		"**/*.mts",
+		"**/*.js"
+	]
+}

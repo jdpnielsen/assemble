@@ -1,0 +1,23 @@
+import { ComponentIcon } from '@sanity/icons'
+import { defineField, defineType } from 'sanity';
+
+const blockTitle = '<%= it.componentName %>';
+
+export default defineType({
+	name: '<%= it.type %>',
+	title: blockTitle,
+	icon: ComponentIcon,
+	type: 'object',
+	fields: [
+		defineField({
+			name: 'title',
+			type: 'string',
+			validation: (rule) => rule.required(),
+		}),
+	],
+	preview: {
+		select: {
+			title: 'title',
+		},
+	},
+});

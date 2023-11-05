@@ -1,0 +1,18 @@
+import { groq } from 'next-sanity';
+import { DataLoaderContext, getClient } from 'src/lib/sanity/lib/sanity.client';
+
+const <%= it.type %>Query = groq`
+	*[_type == "<%= it.type %>" && slug.current == $slug][0] {
+		title,
+		"slug": slug.current
+	}
+`;
+
+export type <%= it.componentName %>Data = {
+	title: string;
+	slug: string;
+};
+
+export async function <%= it.type %>DataLoader({ preview, slug }: DataLoaderContext): Promise<<%= it.componentName %>Data> {
+	return getClient(preview).fetch<<%= it.componentName %>Data>(<%= it.type %>Query, { slug });
+}

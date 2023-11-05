@@ -1,0 +1,10 @@
+import { groq } from 'next-sanity';
+import type { <%= it.componentName %>Props } from 'src/blocks/helper';
+
+export const <%= it.type %>QueryFragment = groq`
+	title,
+`;
+
+export type <%= it.type %>Data = <%= it.componentName %>Props<'<%= it.type %>', {
+	title: string;
+}>;
