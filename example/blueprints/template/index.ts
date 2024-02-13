@@ -5,9 +5,12 @@ import {
 	runner,
 	assembleTemplate,
 	patchTsFile,
+	ts,
 } from '@jdpnielsen/assemble';
+
 import path from 'node:path';
-import { SyntaxKind } from 'typescript';
+
+const { SyntaxKind } = ts;
 
 runner(async (context: AssembleContext) => {
 	const answers = await prompt<{ name: string }>([
