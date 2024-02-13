@@ -9,7 +9,7 @@ import { AssembleConfig, AssembleContext } from './lib/define-config';
 const program = new Command();
 
 program
-	.version('0.0.0')
+	.version('1.1.0')
 	.name('assemble')
 	.description('Command-line tool to generate files based on templates')
 	.option('-c, --config <string>', 'Path for config file. Example: --config ./assemble.config.ts')
