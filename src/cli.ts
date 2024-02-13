@@ -75,7 +75,7 @@ async function run() {
 
 	console.log(`Executing blueprint: "${blueprint.name}"`);
 
-	const { all, failed, stderr } = await execa('npx', ['ts-node', '--project', tsconfigPath, recipePath, '-d', JSON.stringify(assembleContext)], {
+	const { all, failed, stderr } = await execa('npx', ['tsx', '--tsconfig', tsconfigPath, recipePath, '-d', JSON.stringify(assembleContext)], {
 		cwd: __dirname,
 		all: true,
 		input: process.stdin,
