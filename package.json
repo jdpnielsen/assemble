@@ -96,11 +96,10 @@
         {
           "preset": "conventionalcommits",
           "releaseRules": [
-            {
-              "type": "build",
-              "scope": "deps",
-              "release": "patch"
-            }
+            { "type": "chore", "release": "patch" },
+            { "type": "deps", "release": "minor" },
+            { "type": "docs", "release": "patch" },
+            { "type": "build", "scope": "deps", "release": "patch" }
           ]
         }
       ],
