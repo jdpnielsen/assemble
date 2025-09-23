@@ -1,4 +1,4 @@
-import ts from 'typescript';
+import { ts } from 'ts-morph';
 import enquirer from 'enquirer';
 
 export { changeCase } from './lib/change-case.js';

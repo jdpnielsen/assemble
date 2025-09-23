@@ -54,7 +54,7 @@
     "cosmiconfig": "^8.3.6",
     "enquirer": "^2.4.1",
     "eta": "^3.1.1",
-    "ts-morph": "^20.0.0",
+    "ts-morph": "^27.0.0",
     "tsx": "^4.7.1"
   },
   "devDependencies": {
@@ -74,7 +74,7 @@
     "lint-staged": "^13.2.1",
     "semantic-release": "^21.0.1",
     "ts-jest": "^29.1.0",
-    "typescript": "5.2.2"
+    "typescript": "5.9.2"
   },
   "config": {
     "commitizen": {
