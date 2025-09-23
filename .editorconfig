@@ -28,7 +28,7 @@ trim_trailing_whitespace = unset
 indent_style = unset
 indent_size = unset
 
-[package.json,package-lock.json]
+[package.json]
 indent_style = space
 indent_size = 2
 trim_trailing_whitespace = true

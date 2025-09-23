@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.8.8",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
@@ -72,7 +73,7 @@
     "husky": "^6.0.0",
     "jest": "^29.5.0",
     "lint-staged": "^13.2.1",
-    "semantic-release": "^21.0.1",
+    "semantic-release": "^24.2.9",
     "semantic-release-replace-plugin": "^1.2.7",
     "ts-jest": "^29.4.4",
     "typescript": "5.9.2"
@@ -104,6 +105,36 @@
         }
       ],
       [
+        "semantic-release-replace-plugin",
+        {
+          "replacements": [
+            {
+              "files": [
+                "./src/cli-version.ts",
+                "./lib/cli-version.js"
+              ],
+              "from": "export const version = '.*';",
+              "to": "export const version = '${nextRelease.version}';",
+              "results": [
+                {
+                  "file": "./src/cli-version.ts",
+                  "hasChanged": true,
+                  "numMatches": 1,
+                  "numReplacements": 1
+                },
+                {
+                  "file": "./lib/cli-version.js",
+                  "hasChanged": true,
+                  "numMatches": 1,
+                  "numReplacements": 1
+                }
+              ],
+              "countMatches": true
+            }
+          ]
+        }
+      ],
+      [
         "@semantic-release/release-notes-generator",
         {
           "preset": "conventionalcommits",
@@ -128,6 +159,18 @@
       ],
       "@semantic-release/changelog",
       "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "package.json",
+            "package-lock.json",
+            "changelog.md",
+            "./src/cli-version.ts",
+            "./lib/cli-version.js"
+          ]
+        }
+      ],
       "@semantic-release/github"
     ]
   }
