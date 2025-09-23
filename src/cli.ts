@@ -5,13 +5,14 @@ import { cosmiconfigSync } from 'cosmiconfig';
 import { cwd } from 'process';
 import path from 'path';
 import { AssembleConfig, AssembleContext } from './lib/define-config.js';
+import { version } from './cli-version.js';
 
 const { prompt } = enquirer;
 const program = new Command();
 
 program
-	.version('1.1.0')
 	.name('assemble')
+	.version(version)
 	.description('Command-line tool to generate files based on templates')
 	.option('-c, --config <string>', 'Path for config file. Example: --config ./assemble.config.ts')
 	.option('-b, --blueprint <string>', 'Blueprint to use. Example: --blueprint component')

@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^2.2.0",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.8.8",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
@@ -104,6 +105,45 @@
         }
       ],
       [
+        "semantic-release-replace-plugin",
+        {
+          "replacements": [
+            {
+              "files": [
+                "./src/cli-version.ts",
+                "./lib/cli-version.js"
+              ],
+              "from": "export const version = '.*';",
+              "to": "export const version = '${nextRelease.version}';",
+              "results": [
+                {
+                  "file": "./src/cli-version.ts",
+                  "hasChanged": true,
+                  "numMatches": 1,
+                  "numReplacements": 1
+                },
+                {
+                  "file": "./lib/cli-version.js",
+                  "hasChanged": true,
+                  "numMatches": 1,
+                  "numReplacements": 1
+                }
+              ],
+              "countMatches": true
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "./src/cli-version.ts",
+            "./lib/cli-version.js"
+          ]
+        }
+      ],
+      [
         "@semantic-release/release-notes-generator",
         {
           "preset": "conventionalcommits",
@@ -126,9 +166,7 @@
           }
         }
       ],
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/github"
+      "@semantic-release/changelog"
     ]
   }
 }
