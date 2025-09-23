@@ -1,6 +1,6 @@
 import { Command } from 'commander';
 import enquirer from 'enquirer';
-import { execa, ExecaError, getCancelSignal, Options } from 'execa';
+import { execa, ExecaError, Options } from 'execa';
 import { cosmiconfigSync } from 'cosmiconfig';
 import { cwd } from 'process';
 import path from 'path';
@@ -27,7 +27,7 @@ const opts = program.opts() as {
 	dryRun: boolean;
 };
 
-const explorerSync = cosmiconfigSync('assemble')
+const explorerSync = cosmiconfigSync('assemble');
 
 const searchedFor = opts.config
 	? explorerSync.load(opts.config)
