@@ -166,8 +166,7 @@
             "package.json",
             "package-lock.json",
             "changelog.md",
-            "./src/cli-version.ts",
-            "./lib/cli-version.js"
+            "./src/cli-version.ts"
           ]
         }
       ],
