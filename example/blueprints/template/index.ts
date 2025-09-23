@@ -1,3 +1,6 @@
+import path, { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import {
 	prompt,
 	changeCase,
@@ -7,9 +10,6 @@ import {
 	patchTsFile,
 	ts,
 } from '@jdpnielsen/assemble';
-
-import path, { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
 
 const { SyntaxKind } = ts;
 

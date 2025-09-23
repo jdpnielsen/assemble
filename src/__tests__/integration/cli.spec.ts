@@ -1,9 +1,11 @@
-import execa from 'execa';
+import { execa } from 'execa';
 import { rm } from 'fs/promises';
-import { resolve } from 'path';
-import { version } from '../../../package.json';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import packageJson from '../../../package.json' with { type: 'json' };
 
-const bin = resolve(__dirname, './bin.js');
+const currentDir = dirname(fileURLToPath(import.meta.url));
+const bin = resolve(currentDir, '../../../bin/index.js');
 
 describe('assemble', () => {
 	beforeEach(async () => {
@@ -20,6 +22,6 @@ describe('assemble', () => {
 	it('should display version information', async () => {
 		const { stdout } = await execa(bin, ['--version']);
 
-		expect(stdout).toContain(version);
+		expect(stdout).toContain(packageJson.version);
 	});
 });
