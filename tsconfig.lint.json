@@ -11,6 +11,7 @@
 		"*.js",
 		".eslintrc.js",
 		"src/**/*.spec.ts",
+		"src/**/*.spec.mts",
 		"example/**/*.mts",
 		"**/*.ts",
 		"**/*.js"

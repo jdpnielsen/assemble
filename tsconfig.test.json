@@ -5,13 +5,17 @@
 			"node",
 			"jest"
 		],
-		"resolveJsonModule": true
+		"resolveJsonModule": true,
+		"isolatedModules": true
 	},
 	"include": [
 		"*.ts",
+		"*.mts",
 		"*.js",
 		"src/**/*.spec.ts",
+		"src/**/*.spec.mts",
 		"**/*.ts",
+		"**/*.mts",
 		"**/*.js"
 	],
 }
