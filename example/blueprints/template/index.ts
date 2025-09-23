@@ -8,11 +8,14 @@ import {
 	ts,
 } from '@jdpnielsen/assemble';
 
-import path from 'node:path';
+import path, { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const { SyntaxKind } = ts;
 
 runner(async (context: AssembleContext) => {
+	const currentDir = dirname(fileURLToPath(import.meta.url));
+
 	const answers = await prompt<{ name: string }>([
 		{
 			type: 'text',
@@ -32,35 +35,35 @@ runner(async (context: AssembleContext) => {
 	};
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.template.tsx.eta'),
+		input: path.join(currentDir, './blueprint.template.tsx.eta'),
 		output: path.join(context.cwd, `./src/templates/${vars.name}/${vars.name}.template.tsx`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.stories.tsx.eta'),
+		input: path.join(currentDir, './blueprint.stories.tsx.eta'),
 		output: path.join(context.cwd, `./src/templates/${vars.name}/${vars.name}.stories.tsx`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.query.ts.eta'),
+		input: path.join(currentDir, './blueprint.query.ts.eta'),
 		output: path.join(context.cwd, `./src/templates/${vars.name}/${vars.name}.query.ts`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.schema.ts.eta'),
+		input: path.join(currentDir, './blueprint.schema.ts.eta'),
 		output: path.join(context.cwd, `./src/templates/${vars.name}/${vars.name}.schema.ts`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './index.ts.eta'),
+		input: path.join(currentDir, './index.ts.eta'),
 		output: path.join(context.cwd, `./src/templates/${vars.name}/index.ts`),
 		templateVariables: vars,
 		context,

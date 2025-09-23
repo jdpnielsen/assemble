@@ -8,11 +8,14 @@ import {
 	ts,
 } from '@jdpnielsen/assemble';
 
-import path from 'path';
+import path, { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const { SyntaxKind } = ts;
 
 runner(async (context: AssembleContext) => {
+	const currentDir = dirname(fileURLToPath(import.meta.url));
+
 	const answers = await prompt<{ name: string }>([
 		{
 			type: 'text',
@@ -32,42 +35,42 @@ runner(async (context: AssembleContext) => {
 	};
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.tsx.eta'),
+		input: path.join(currentDir, './blueprint.tsx.eta'),
 		output: path.join(context.cwd, `./src/blocks/${vars.name}/${vars.name}.blocks.tsx`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.stories.tsx.eta'),
+		input: path.join(currentDir, './blueprint.stories.tsx.eta'),
 		output: path.join(context.cwd, `./src/blocks/${vars.name}/${vars.name}.stories.tsx`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.module.scss.eta'),
+		input: path.join(currentDir, './blueprint.module.scss.eta'),
 		output: path.join(context.cwd, `./src/blocks/${vars.name}/${vars.name}.module.scss`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.schema.ts.eta'),
+		input: path.join(currentDir, './blueprint.schema.ts.eta'),
 		output: path.join(context.cwd, `./src/blocks/${vars.name}/${vars.name}.schema.ts`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.query.ts.eta'),
+		input: path.join(currentDir, './blueprint.query.ts.eta'),
 		output: path.join(context.cwd, `./src/blocks/${vars.name}/${vars.name}.query.ts`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './index.ts.eta'),
+		input: path.join(currentDir, './index.ts.eta'),
 		output: path.join(context.cwd, `./src/blocks/${vars.name}/index.ts`),
 		templateVariables: vars,
 		context,
