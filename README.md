@@ -27,6 +27,8 @@ The index.ts file is where the blueprint is defined. Its executes a runner funct
 import { prompt, changeCase, AssembleContext, runner, assembleTemplate } from '@jdpnielsen/assemble';
 
 runner(async (context: AssembleContext) => {
+  const currentDir = dirname(fileURLToPath(import.meta.url));
+
   // Enquirer is bundled with Assemble and can be used to prompt the user for input
   const { name } = await prompt([
     {
@@ -41,7 +43,7 @@ runner(async (context: AssembleContext) => {
 
   await assembleTemplate({
     // Assemble uses eta for templating
-    input: path.join(__dirname, './blueprint.tsx.eta'),
+    input: path.join(currentDir, './blueprint.tsx.eta'),
     output: path.join(context.cwd, `./src/components/${name.kebabCase}/${name.kebabCase}.tsx`),
     templateVariables: {
       componentName: name.pascalCase,

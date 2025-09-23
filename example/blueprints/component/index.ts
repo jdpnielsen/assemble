@@ -5,9 +5,12 @@ import {
 	runner,
 	assembleTemplate,
 } from '@jdpnielsen/assemble';
-import path from 'node:path';
+import path, { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 runner(async (context: AssembleContext) => {
+	const currentDir = dirname(fileURLToPath(import.meta.url));
+
 	const answers = await prompt<{ name: string; destination: string }>([
 		{
 			type: 'text',
@@ -33,21 +36,21 @@ runner(async (context: AssembleContext) => {
 	};
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.tsx.eta'),
+		input: path.join(currentDir, './blueprint.tsx.eta'),
 		output: path.join(context.cwd, `./${answers.destination}/${vars.name}/${vars.name}.tsx`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.stories.tsx.eta'),
+		input: path.join(currentDir, './blueprint.stories.tsx.eta'),
 		output: path.join(context.cwd, `./${answers.destination}/${vars.name}/${vars.name}.stories.tsx`),
 		templateVariables: vars,
 		context,
 	});
 
 	await assembleTemplate({
-		input: path.join(__dirname, './blueprint.module.scss.eta'),
+		input: path.join(currentDir, './blueprint.module.scss.eta'),
 		output: path.join(context.cwd, `./${answers.destination}/${vars.name}/${vars.name}.module.scss`),
 		templateVariables: vars,
 		context,

@@ -1,4 +1,4 @@
-import { defineConfig } from '../src/index';
+import { defineConfig } from '@jdpnielsen/assemble';
 
 export default defineConfig({
 	blueprints: [
