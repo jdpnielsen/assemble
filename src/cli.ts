@@ -1,11 +1,12 @@
 import { Command } from 'commander';
-import { prompt } from 'enquirer';
-import execa from 'execa';
+import enquirer from 'enquirer';
+import { execa, ExecaError, getCancelSignal, Options } from 'execa';
 import { cosmiconfigSync } from 'cosmiconfig';
 import { cwd } from 'process';
 import path from 'path';
-import { AssembleConfig, AssembleContext } from './lib/define-config';
+import { AssembleConfig, AssembleContext } from './lib/define-config.js';
 
+const { prompt } = enquirer;
 const program = new Command();
 
 program
@@ -75,20 +76,22 @@ async function run() {
 
 	console.log(`Executing blueprint: "${blueprint.name}"`);
 
-	const { all, failed, stderr } = await execa('npx', ['tsx', '--tsconfig', tsconfigPath, recipePath, '-d', JSON.stringify(assembleContext)], {
-		cwd: __dirname,
-		all: true,
-		input: process.stdin,
-		stdout: process.stdout,
-	})
+	try {
+		const { failed, stderr } = await execa('npx', ['tsx', '--tsconfig', tsconfigPath, recipePath, '-d', JSON.stringify(assembleContext)], {
+			cwd: path.dirname(process.argv[1]),
+			stdin: 'inherit',
+			stdout: 'inherit',
+		} satisfies Options);
+		if (failed) {
+			console.error(stderr);
+			throw new Error('failed to build blueprint');
+		}
+	} catch (err) {
+		if (err instanceof ExecaError && err.isCanceled) {
+			return console.log('Process was canceled');
+		}
 
-	if (all) {
-		console.log(all.replaceAll('\\\\', '\\'));
-	}
-
-	if (failed) {
-		console.error(stderr);
-		throw new Error('failed to build blueprint');
+		throw err;
 	}
 }
 

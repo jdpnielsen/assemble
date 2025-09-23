@@ -7,6 +7,7 @@
     "lib/**/*",
     "bin/**/*"
   ],
+  "type": "module",
   "bin": {
     "assemble": "bin/index.js"
   },
@@ -67,7 +68,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.25.0",
     "eslint-plugin-node": "^11.1.0",
-    "execa": "5.1.1",
+    "execa": "9.6.0",
     "husky": "^6.0.0",
     "jest": "^29.5.0",
     "lint-staged": "^13.2.1",
