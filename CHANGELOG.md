@@ -1,3 +1,9 @@
+## 2.2.0 (2025-09-23)
+
+* chore: configure release rules ([2cadeaf](https://github.com/jdpnielsen/assemble/commit/2cadeaf))
+* docs: manually update changelog ([cd5004a](https://github.com/jdpnielsen/assemble/commit/cd5004a))
+* deps: include execa package in dependencies ([65b06bd](https://github.com/jdpnielsen/assemble/commit/65b06bd))
+
 ## <small>2.1.1 (2025-09-23)</small>
 
 * fix: match changelog.md ([5ce8f73](https://github.com/jdpnielsen/assemble/commit/5ce8f73))

@@ -1,6 +1,6 @@
 {
   "name": "@jdpnielsen/assemble",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "CLI to generate files based on templates",
   "files": [
     "!lib/__tests__/**/*",
@@ -96,10 +96,23 @@
         {
           "preset": "conventionalcommits",
           "releaseRules": [
-            { "type": "chore", "release": "patch" },
-            { "type": "deps", "release": "minor" },
-            { "type": "docs", "release": "patch" },
-            { "type": "build", "scope": "deps", "release": "patch" }
+            {
+              "type": "chore",
+              "release": "patch"
+            },
+            {
+              "type": "deps",
+              "release": "minor"
+            },
+            {
+              "type": "docs",
+              "release": "patch"
+            },
+            {
+              "type": "build",
+              "scope": "deps",
+              "release": "patch"
+            }
           ]
         }
       ],
