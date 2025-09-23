@@ -35,7 +35,7 @@
     "url": "https://github.com/jdpnielsen"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "keywords": [
     "typescript",
