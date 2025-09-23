@@ -1,9 +1,11 @@
 import ts from 'typescript';
-export { ts };
-export { prompt } from 'enquirer';
-export { changeCase } from './lib/change-case';
-export { runner } from './lib/runner';
-export * from './lib/file-handler';
-export * from './lib/define-config';
+import enquirer from 'enquirer';
 
-export { defineConfig } from './lib/define-config';
+export { changeCase } from './lib/change-case.js';
+export { runner } from './lib/runner.js';
+export * from './lib/file-handler.js';
+export * from './lib/define-config.js';
+export { defineConfig } from './lib/define-config.js';
+
+export { ts };
+export const { prompt } = enquirer;

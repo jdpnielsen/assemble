@@ -1,5 +1,5 @@
 import { program } from 'commander';
-import type { AssembleContext } from './define-config';
+import type { AssembleContext } from './define-config.js';
 
 export function runner(recipe: (context: AssembleContext) => Promise<void>) {
 	program

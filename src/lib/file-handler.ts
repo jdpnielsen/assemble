@@ -3,7 +3,7 @@ import { writeFile, readFile, mkdir, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { Eta } from 'eta'
 import c from 'ansi-colors';
-import { AssembleContext } from './define-config';
+import { AssembleContext } from './define-config.js';
 import { IndentationText, Project, QuoteKind, SourceFile } from 'ts-morph';
 
 type ReadTemplateOptions = {
@@ -16,7 +16,7 @@ export async function readTemplate({ input }: ReadTemplateOptions) {
 
 type WriteTemplateOptions = {
 	destination: PathLike;
-	data: string | Buffer;
+	data: string;
 	context: AssembleContext;
 };
 
